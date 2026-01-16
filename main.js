@@ -1,46 +1,46 @@
-async function saveSeva() {
+// main.js - આને પૂરેપૂરી બદલી નાખો
+function saveSeva() {
     const note = document.getElementById('sevaNote').value;
-    const key = sessionStorage.getItem('nijSevaKey');
+    if (!note) return alert("કંઈક તો લખો!");
 
-    if (!key) {
-        alert("સુરક્ષા ખામી! ફરી લોગિન કરો.");
-        return;
-    }
-
-    // ડેટા એન્ક્રિપ્ટ કરો
-    // અહીં આપણે encryption.js ના ફંક્શનનો ઉપયોગ કરી શકીએ
-    console.log("Saving encrypted data...");
-    alert("તમારી સેવા નોંધ એન્ક્રિપ્ટ થઈને સેવ થઈ ગઈ છે!");
-}
-// સેવા નોંધ સેવ કરવા માટે
-async function saveSeva() {
-    const note = document.getElementById('sevaNote').value;
-    const key = sessionStorage.getItem('nijSevaKey');
-
-    if (!key) {
-        alert("સુરક્ષા ખામી! ફરી લોગિન કરો.");
-        window.location.href = 'index.html';
-        return;
-    }
-
-    // ડેટા લોકલ સ્ટોરેજમાં સેવ કરો
-    const sevaData = {
+    // ડેટા ઓબ્જેક્ટ
+    const newEntry = {
+        id: Date.now(),
         date: new Date().toLocaleDateString('gu-IN'),
-        note: note,
-        timestamp: Date.now()
+        text: note,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
 
-    localStorage.setItem('lastSevaEntry', JSON.stringify(sevaData));
-    alert("તમારી સેવા નોંધ સુરક્ષિત રીતે સેવ થઈ ગઈ છે!");
+    // જૂના ડેટા મેળવો
+    let history = JSON.parse(localStorage.getItem('sevaHistory') || "[]");
+    history.unshift(newEntry); // નવી એન્ટ્રી ઉપર ઉમેરો
+
+    // સેવ કરો
+    localStorage.setItem('sevaHistory', JSON.stringify(history));
+    
+    document.getElementById('sevaNote').value = ""; // ક્લિયર કરો
+    loadHistory();
+    alert("સેવા સફળતાપૂર્વક નોંધાઈ ગઈ!");
 }
 
-// પેજ લોડ થાય ત્યારે જૂની નોંધ બતાવવા માટે
-window.onload = function() {
-    const savedData = localStorage.getItem('lastSevaEntry');
-    if (savedData) {
-        const data = JSON.parse(savedData);
-        if (document.getElementById('sevaNote')) {
-            document.getElementById('sevaNote').value = data.note;
-        }
-    }
-};
+function loadHistory() {
+    const historyDiv = document.getElementById('history');
+    const history = JSON.parse(localStorage.getItem('sevaHistory') || "[]");
+    
+    historyDiv.innerHTML = '<h3 class="font-bold text-slate-500 text-sm px-2 uppercase tracking-wider">તાજેતરની નોંધ</h3>';
+    
+    history.slice(0, 5).forEach(item => {
+        historyDiv.innerHTML += `
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-50 animate-fade-in">
+                <div class="flex justify-between text-xs text-slate-400 mb-1">
+                    <span>${item.date}</span>
+                    <span>${item.time}</span>
+                </div>
+                <p class="text-slate-700">${item.text}</p>
+            </div>
+        `;
+    });
+}
+
+// પેજ લોડ થાય ત્યારે
+window.onload = loadHistory;
