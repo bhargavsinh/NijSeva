@@ -44,3 +44,52 @@ function loadHistory() {
 
 // પેજ લોડ થાય ત્યારે
 window.onload = loadHistory;
+// Swaroop Settings Update Function
+function updateSwaroopSettings() {
+    const name = document.getElementById('inputSwaroopName').value;
+    const gadi = document.getElementById('inputGadi').value;
+    const imageInput = document.getElementById('swaroopImage');
+
+    if (!name) return alert("કૃપા કરીને નામ લખો");
+
+    const swaroopData = {
+        name: name,
+        gadi: gadi,
+        lastUpdated: new Date().toLocaleDateString('gu-IN')
+    };
+
+    // Image Handle (Base64 conversion for LocalStorage)
+    if (imageInput.files && imageInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            swaroopData.image = e.target.result;
+            localStorage.setItem('swaroopInfo', JSON.stringify(swaroopData));
+            alert("સ્વરૂપ માહિતી સેવ થઈ ગઈ!");
+            location.reload();
+        };
+        reader.readAsDataURL(imageInput.files[0]);
+    } else {
+        localStorage.setItem('swaroopInfo', JSON.stringify(swaroopData));
+        alert("માહિતી સેવ થઈ ગઈ!");
+    }
+}
+
+// પેજ લોડ વખતે ડેટા બતાવો
+function loadSwaroopInfo() {
+    const data = JSON.parse(localStorage.getItem('swaroopInfo'));
+    if (data) {
+        if (document.getElementById('displaySwaroopName')) {
+            document.getElementById('displaySwaroopName').innerText = data.name;
+        }
+        if (document.getElementById('swaroopImgPreview') && data.image) {
+            document.getElementById('swaroopImgPreview').innerHTML = `<img src="${data.image}" class="w-full h-full object-cover">`;
+        }
+        // Input fields માં પણ ડેટા ભરો
+        if (document.getElementById('inputSwaroopName')) document.getElementById('inputSwaroopName').value = data.name;
+        if (document.getElementById('inputGadi')) document.getElementById('inputGadi').value = data.gadi;
+    }
+}
+
+// Window load પર ફંક્શન કોલ કરો
+window.addEventListener('load', loadSwaroopInfo);
+
