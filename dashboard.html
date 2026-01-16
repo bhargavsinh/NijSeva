@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <title>NijSeva - ડેશબોર્ડ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Noto Sans Gujarati', sans-serif; }</style>
+</head>
+<body class="bg-orange-50">
+    <nav class="bg-orange-600 text-white p-4 shadow-md">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">NijSeva Dashboard</h1>
+            <a href="index.html" class="text-sm border border-white px-3 py-1 rounded">Logout</a>
+        </div>
+    </nav>
+
+    <main class="max-w-2xl mx-auto p-4 mt-6">
+        <div class="bg-white p-6 rounded-xl shadow-lg mb-6">
+            <h2 class="text-xl font-bold text-orange-800 mb-4">આજની સેવા નોંધપોથી</h2>
+            
+            <div class="space-y-4">
+                <div class="flex items-center justify-between p-3 border-b">
+                    <span>૧. મંગલા</span>
+                    <input type="checkbox" class="w-6 h-6 accent-orange-600">
+                </div>
+                <div class="flex items-center justify-between p-3 border-b">
+                    <span>૨. શૃંગાર</span>
+                    <input type="checkbox" class="w-6 h-6 accent-orange-600">
+                </div>
+                <div class="flex items-center justify-between p-3 border-b">
+                    <span>૩. રાજભોગ</span>
+                    <input type="checkbox" class="w-6 h-6 accent-orange-600">
+                </div>
+
+                <div class="mt-4">
+                    <label class="block text-sm font-medium mb-1">આજનો ભાવ / નોંધ (Private)</label>
+                    <textarea id="sevaNote" class="w-full border rounded-lg p-2 h-24 outline-none focus:ring-2 focus:ring-orange-500" placeholder="આજે પ્રભુને આ ભોગ ધર્યો..."></textarea>
+                </div>
+
+                <button onclick="saveSeva()" class="w-full bg-orange-600 text-white py-3 rounded-lg font-bold shadow-md hover:bg-orange-700">
+                    સેવા સુરક્ષિત કરો
+                </button>
+            </div>
+        </div>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>
