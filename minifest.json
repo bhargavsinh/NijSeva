@@ -1,0 +1,15 @@
+{
+  "name": "NijSeva Ecosystem",
+  "short_name": "NijSeva",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ea580c",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2903/2903521.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
