@@ -1,0 +1,16 @@
+/* Custom Styles for NijSeva */
+body {
+    background-color: #fffaf0;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.01);
+}
