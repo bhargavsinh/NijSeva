@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NijSeva | લોગિન</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans Gujarati', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
+    </style>
+</head>
+<body class="gradient-bg h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md border-t-4 border-orange-500">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-orange-600 tracking-tight">NijSeva</h1>
+            <p class="text-gray-500 mt-2">તમારી ખાનગી સેવા નોંધપોથી</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">ઈમેઈલ અથવા વૈષ્ણવ આઈડી</label>
+                <input type="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 outline-none transition" placeholder="example@mail.com">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">પાસવર્ડ (Master Key)</label>
+                <input type="password" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 outline-none transition" placeholder="••••••••">
+                <p class="text-xs text-gray-400 mt-2">* આ કી તમારા ડેટાને એન્ક્રિપ્ટ કરવા માટે વપરાશે.</p>
+            </div>
+
+            <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-lg transition-transform active:scale-95 shadow-lg">
+                પ્રવેશ કરો
+            </button>
+        </form>
+
+        <div class="mt-6 text-center text-sm text-gray-600">
+            નવું એકાઉન્ટ બનાવવા માટે? <a href="#" class="text-orange-600 font-bold hover:underline">અહીં ક્લિક કરો</a>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
 
