@@ -2,48 +2,57 @@
 <html lang="gu">
 <head>
     <meta charset="UTF-8">
-    <title>NijSeva - ડેશબોર્ડ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ડેશબોર્ડ | નિજ સેવા</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;700&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Noto Sans Gujarati', sans-serif; }</style>
 </head>
-<body class="bg-orange-50">
-    <nav class="bg-orange-600 text-white p-4 shadow-md">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">NijSeva Dashboard</h1>
-            <a href="index.html" class="text-sm border border-white px-3 py-1 rounded">Logout</a>
+<body class="bg-slate-50 font-['Noto_Sans_Gujarati']">
+
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 p-4">
+        <div class="max-w-md mx-auto flex justify-between items-center">
+            <span class="font-bold text-orange-600 text-xl">નિજ સેવા</span>
+            <div id="samvatDate" class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-bold">
+                સંવત ૨૦૮૨
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <main class="max-w-2xl mx-auto p-4 mt-6">
-        <div class="bg-white p-6 rounded-xl shadow-lg mb-6">
-            <h2 class="text-xl font-bold text-orange-800 mb-4">આજની સેવા નોંધપોથી</h2>
+    <main class="max-w-md mx-auto p-4 space-y-6 pb-24">
+        
+        <div class="bg-gradient-to-br from-orange-500 to-amber-600 rounded-3xl p-6 text-white shadow-xl">
+            <h2 class="text-lg opacity-90">જય શ્રી કૃષ્ણ,</h2>
+            <p class="text-2xl font-bold mt-1">આજની સેવા સ્થિતિ</p>
+            <div class="mt-4 flex gap-2 overflow-x-auto pb-2">
+                <span class="bg-white/20 px-3 py-1 rounded-lg text-sm italic">મંગલા ✅</span>
+                <span class="bg-white/20 px-3 py-1 rounded-lg text-sm italic">શૃંગાર ⏳</span>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100">
+            <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <span>📝</span> દૈનિક નોંધ
+            </h3>
             
-            <div class="space-y-4">
-                <div class="flex items-center justify-between p-3 border-b">
-                    <span>૧. મંગલા</span>
-                    <input type="checkbox" class="w-6 h-6 accent-orange-600">
-                </div>
-                <div class="flex items-center justify-between p-3 border-b">
-                    <span>૨. શૃંગાર</span>
-                    <input type="checkbox" class="w-6 h-6 accent-orange-600">
-                </div>
-                <div class="flex items-center justify-between p-3 border-b">
-                    <span>૩. રાજભોગ</span>
-                    <input type="checkbox" class="w-6 h-6 accent-orange-600">
-                </div>
-
-                <div class="mt-4">
-                    <label class="block text-sm font-medium mb-1">આજનો ભાવ / નોંધ (Private)</label>
-                    <textarea id="sevaNote" class="w-full border rounded-lg p-2 h-24 outline-none focus:ring-2 focus:ring-orange-500" placeholder="આજે પ્રભુને આ ભોગ ધર્યો..."></textarea>
-                </div>
-
-                <button onclick="saveSeva()" class="w-full bg-orange-600 text-white py-3 rounded-lg font-bold shadow-md hover:bg-orange-700">
-                    સેવા સુરક્ષિત કરો
+            <textarea id="sevaNote" 
+                class="w-full h-40 bg-slate-50 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-orange-500 transition-all"
+                placeholder="આજના મનોરથ અને ભાવ અહી લખો..."></textarea>
+            
+            <div class="flex items-center gap-4 mt-4">
+                <button class="p-3 bg-slate-100 rounded-xl hover:bg-slate-200 transition">📸</button>
+                <button onclick="saveSeva()" class="flex-1 bg-orange-600 text-white font-bold py-3 rounded-xl shadow-lg shadow-orange-100 hover:bg-orange-700 transition">
+                    નોંધ સેવ કરો
                 </button>
             </div>
         </div>
+
+        <div id="history" class="space-y-3">
+            <h3 class="font-bold text-slate-500 text-sm px-2 uppercase tracking-wider">તાજેતરની નોંધ</h3>
+            </div>
+
     </main>
-    <script src="js/main.js"></script>
+
+    <script src="encryption.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
